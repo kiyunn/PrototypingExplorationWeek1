@@ -8,6 +8,7 @@ public class Particles : MonoBehaviour
 	// Use this for initialization
 	void Start()
     {
+        //Calls function "Die" and makes Particles disappear after 5 seconds
         Invoke("Die", 5f);
 	}
 	
@@ -17,8 +18,10 @@ public class Particles : MonoBehaviour
 		
 	}
 
+    //Die Function
     void Die()
     {
+        //Destorys particle system object
         Destroy(gameObject);
     }
 }
