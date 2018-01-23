@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        //Calls Move and Interact functions
         UpdateMove();
         UpdateInteract();   
     }
@@ -34,26 +35,32 @@ public class Player : MonoBehaviour
         body.AddForce(direction * moveForce * Time.deltaTime);
     }
 
-    //Picking up items function
+    //Interaction with items function
     void UpdateInteract()
     {
         //If player hits key (button dependent on input settings in unity) 
         if (Input.GetButtonDown("Collect" + controller))
         {
+            //Local Variables for interact function
             RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, interactionRange, Vector2.zero, 0);
             Collectible bestCollectible = null;
             float bestDistance = float.MaxValue;
 
             foreach (RaycastHit2D hit in hits)
             {
-                //If player's collider is in treasure object, continue to next statement below
+                //Detects, filters and ignore any object that is not a collectible item (another Player)
+                //Continue to loop and filter the next object detected
                 GameObject hitObject = hit.collider.gameObject;
                 if (hitObject == gameObject)
                 {
                     continue;
                 }
 
+                //Get treasure script component
                 Collectible treasure = hitObject.GetComponent<Collectible>();
+
+                //if the gameobject detected is a collectable, then calculate the distance between the player and collectable
+                //if the player is in range distance of collectible, then allow collectable interaction
                 if (treasure)
                 {
                     float distance = Vector2.Distance(transform.position, hitObject.transform.position);
@@ -65,6 +72,7 @@ public class Player : MonoBehaviour
                 }
             }
 
+            //If collectable, tries to collect object (Jess's script) and create particle effects when button is pressed
             if (bestCollectible)
             {
                 bestCollectible.Collect(this);
