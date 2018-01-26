@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
     public void AddScore(int value)
     {
         score += value;
-        scoreText.text = score + "";
+        scoreText.text = score.ToString();
         scoreText.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
     }
 
