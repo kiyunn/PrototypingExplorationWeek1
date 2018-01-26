@@ -85,6 +85,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    //Add Score function
+    //Connects score value to text mesh to show score and transforms local scale of text score
     public void AddScore(int value)
     {
         score += value;

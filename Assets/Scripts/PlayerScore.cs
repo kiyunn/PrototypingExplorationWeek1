@@ -13,6 +13,8 @@ public class PlayerScore : MonoBehaviour {
 
     void Update()
     {
+        //transform local position of the players text score
+        //Allows the text to follow player's position
         Vector3 pos = transform.localPosition;
         pos.y = initialY;
         if (transform.parent.position.y > 4f)
