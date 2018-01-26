@@ -6,6 +6,9 @@ public class Player : MonoBehaviour
     public int controller = 1;
     public float moveForce = 2000f;
     public float interactionRange = 0.5f;
+    public TextMesh scoreText;
+    int score;
+
     Rigidbody2D body;
 
     private void Awake()
@@ -17,7 +20,8 @@ public class Player : MonoBehaviour
     {
         //Calls Move and Interact functions
         UpdateMove();
-        UpdateInteract();   
+        UpdateInteract();
+        scoreText.gameObject.transform.localScale = Vector3.Slerp(scoreText.gameObject.transform.localScale, new Vector3(0.1f, 0.1f, 0.1f), 10f * Time.deltaTime);
     }
 
     //Character move function 
@@ -80,4 +84,17 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void AddScore(int value)
+    {
+        score += value;
+        scoreText.text = score + "";
+        scoreText.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+    }
+
+    public int GetScore()
+    {
+        return score;
+    }
+
 }
