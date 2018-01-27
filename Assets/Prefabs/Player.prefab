@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114637014882829112}
   - component: {fileID: 50826249706495648}
   - component: {fileID: 58976548409983890}
+  - component: {fileID: 114064610082051254}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -166,7 +167,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -261,6 +261,18 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!114 &114064610082051254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1591074413336238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f191db3318e477145b258d926189582f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 10
 --- !u!114 &114637014882829112
 MonoBehaviour:
   m_ObjectHideFlags: 1
