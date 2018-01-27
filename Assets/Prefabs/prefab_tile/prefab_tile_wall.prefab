@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4257893637510026}
   - component: {fileID: 212370271814875170}
   - component: {fileID: 61014827373657208}
+  - component: {fileID: 114757678053873234}
   m_Layer: 0
   m_Name: prefab_tile_wall
   m_TagString: Untagged
@@ -66,6 +67,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 38.879997, y: 25.17}
   m_EdgeRadius: 0
+--- !u!114 &114757678053873234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1234119662969368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e6937226e553c46b6513d83a38dd82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collision: {fileID: 61014827373657208}
+  explodePrefab: {fileID: 1424044309531426, guid: fd9d73d5b101b0d4fa910dce5b60256c,
+    type: 2}
 --- !u!212 &212370271814875170
 SpriteRenderer:
   m_ObjectHideFlags: 1
