@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
             //Local Variables for interact function
             RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, interactionRange, Vector2.zero, 0);
             Collectible bestCollectible = null;
+            BreakableWall bestWall = null;
             float bestDistance = float.MaxValue;
 
             foreach (RaycastHit2D hit in hits)
@@ -74,13 +75,30 @@ public class Player : MonoBehaviour
                         bestDistance = distance;
                     }
                 }
+                else
+                {
+                    BreakableWall wall = hitObject.GetComponent<BreakableWall>();
+                    if (wall)
+                    {
+                        float distance = Vector2.Distance(transform.position, hitObject.transform.position);
+                        if (distance < bestDistance)
+                        {
+                            bestWall = wall;
+                            bestDistance = distance;
+                        }
+                    }
+                }
             }
 
             //If collectable, tries to collect object (Jess's script) and create particle effects when button is pressed
-            if (bestCollectible)
+            if (bestCollectible && !bestWall)
             {
                 bestCollectible.Collect(this);
                 Instantiate(particlesPrefab, transform.position, Quaternion.identity);
+            }
+            else if (bestWall)
+            {
+                bestWall.Break();
             }
         }
     }
